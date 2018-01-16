@@ -22,7 +22,6 @@ To do this, we set some _query variables_ and then reference them in the query.
         }
 
         fragment orgFields on Organization {
-            path
             id
             url
             members {

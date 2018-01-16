@@ -7,7 +7,6 @@ A fragments is a group of fields that can be reused.
         {
             first: organization(login: "facebook") {
                 login
-                path
                 id
                 url
                 members {
@@ -15,7 +14,6 @@ A fragments is a group of fields that can be reused.
                 }
             }
             second: organization(login: "Netflix") {
-                path
                 id
                 url
                 members {
@@ -23,6 +21,8 @@ A fragments is a group of fields that can be reused.
                 }
             }
         }
+
+    > Note: Auto-complete doesn't work when using aliases in GraphiQL (bug?). Remove the alias temporarily to see the correct autocompletions.
 
 2. This can be rewritten, as there is duplication across the subfields. First, define a fragment that contains the fields you want to reuse, but don't execute the query yet:
 
