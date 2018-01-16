@@ -43,15 +43,15 @@ A fragments is a group of fields that can be reused.
 
    Now apply this fragment by using the _spread_ operator (`...`) before the fragment name. Type the following query either before or after your fragment definition, and execute it:
 
-   {
-       first: organization(login: "facebook") {
+       {
+         first: organization(login: "facebook") {
            login
    				...orgFields
-       }
-       second: organization(login: "Netflix") {
+         }
+         second: organization(login: "Netflix") {
            ...orgFields
+         }
        }
-   }
 
 3. Now your turn. Retrieve the `User`s with `login`s "stubailo" and "gaearon",  and
    the fields `login`,`lastName`,`createdAt`, `company`, `location` and `email`.
