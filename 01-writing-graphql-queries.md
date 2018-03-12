@@ -17,7 +17,7 @@ To learn GraphQL, we'll start by using the GitHub API.
       `query MyQuery { foo }`   | A named query
 
    2. We'll just use the shorthand form for now.
-      In the left pane type an open brace `{`: you'll see GraphiQL complete the query by adding the closing brace.
+      In the left pane type an open brace ('`{`'). You'll see GraphiQL complete the query by adding the closing brace.
       Hit return.
 
    3. With the cursor between the braces, type CTRL-SPACE to view a list of completions. Select `viewer`. This reflects data about the current viewer of the graph (you).
