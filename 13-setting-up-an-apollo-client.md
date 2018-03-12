@@ -19,12 +19,15 @@
         import { HttpLink } from 'apollo-link-http';
         import { InMemoryCache } from 'apollo-cache-inmemory';
 
-
         const client = new ApolloClient({
           link: new HttpLink(),
           cache: new InMemoryCache(),
         });
 
+
+4. Import `ApolloProvider`:
+
+        import { ApolloProvider } from 'react-apollo';
 
 4. Create an `ApolloProvider` component, which will wrap components in your React tree:
 
