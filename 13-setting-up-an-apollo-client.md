@@ -29,7 +29,7 @@
 
         import { ApolloProvider } from 'react-apollo';
 
-4. Create an `ApolloProvider` component, which will wrap components in your React tree:
+5. Create an `ApolloProvider` component, which will wrap components in your React tree:
 
         ReactDOM.render(
           <ApolloProvider client={client}>
@@ -40,12 +40,12 @@
 
 ### `App.js`
 
-5. Import the Apollo client libraries:
+6. Import the Apollo client libraries:
 
         import { graphql } from 'react-apollo';
         import gql from 'graphql-tag';
 
-6. At the bottom of the file, after the `App` component class, remove the `export default App;` clause. We will set up the GraphQL query and wrap the `App` component using the `graphql()` function to make the retrieved data available to our `App` component:
+7. At the bottom of the file, after the `App` component class, remove the `export default App;` clause. We will set up the GraphQL query and wrap the `App` component using the `graphql()` function to make the retrieved data available to our `App` component:
 
         const MyQuery = gql`query MyQuery {
           system {
@@ -57,7 +57,7 @@
         const MyAppWithData = graphql(MyQuery)(App);
         export default MyAppWithData;
 
-7. Now we just need to render the data received. I recommend installing the [React devtools](https://github.com/facebook/react-devtools) if you haven't already done so, to view the component's props so you can see the data returned by the server. I added a paragraph to my `App` render function as follows:
+8. Now we just need to render the data received. I recommend installing the [React devtools](https://github.com/facebook/react-devtools) if you haven't already done so, to view the component's props so you can see the data returned by the server. I added a paragraph to my `App` render function as follows:
 
         class App extends Component {
           render() {
