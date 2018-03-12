@@ -15,6 +15,11 @@
 
 3. Import `apollo-client` and instantiate it, pointing it at your local GraphQL server:
 
+        import { ApolloClient } from 'apollo-client';
+        import { HttpLink } from 'apollo-link-http';
+        import { InMemoryCache } from 'apollo-cache-inmemory';
+
+
         const client = new ApolloClient({
           link: new HttpLink(),
           cache: new InMemoryCache(),
