@@ -2,17 +2,24 @@
 
 1. Install `create-react-app` if you haven't already done so. Use it to build out a new React app. Start the local server as instructed.
 
-2. Install the `react-apollo` npm package. (Its use is described [here](http://dev.apollodata.com/react/initialization.html).)
+2. Install the following npm packages:
 
-### index.js
+        npm install apollo-client apollo-cache-inmemory apollo-link-http react-apollo graphql-tag graphql ---save
+
+    Documentation:
+
+    - [github repo](https://github.com/apollographql/react-apollo)
+    - [docs](https://www.apollographql.com/docs/react/quick-start.html)
+
+### `index.js`
 
 3. Import `apollo-client` and instantiate it, pointing it at your local GraphQL server:
 
-        import { ApolloClient, ApolloProvider, createNetworkInterface } from 'react-apollo';
-
         const client = new ApolloClient({
-          networkInterface: createNetworkInterface({ uri: 'http://localhost:3002/graphql' }),
+          link: new HttpLink(),
+          cache: new InMemoryCache(),
         });
+
 
 4. Create an `ApolloProvider` component, which will wrap components in your React tree:
 
@@ -23,21 +30,19 @@
           document.getElementById('root')
         );
 
-### App.js
+### `App.js`
 
 5. Import the Apollo client libraries:
 
-        import { gql, graphql } from 'react-apollo';
+        import { graphql } from 'react-apollo';
+        import gql from 'graphql-tag';
 
 6. At the bottom of the file, after the `App` component class, remove the `export default App;` clause. We will set up the GraphQL query and wrap the `App` component using the `graphql()` function to make the retrieved data available to our `App` component:
 
         const MyQuery = gql`query MyQuery {
-          person(id: "12") {
-            id
-            firstName
-            lastName
-            city
-            country
+          system {
+            hubname
+            uptime
           }
         }`;
 
@@ -48,11 +53,11 @@
 
         class App extends Component {
           render() {
-            let person = this.props.data.person;
+            let system = this.props.data.system;
             return (
               ...
               <p>
-                  <span>{person && person.firstName} </span>
+                  Uptime: <span>{system && system.uptime} </span>
               </p>
               ...
 
@@ -66,5 +71,4 @@
 Next steps to take are:
 
 1. Investigate `this.props.data.loading`, and implement a "Loading…" spinner.
-2. Refactor the code into a `PersonView` component. What props might this component receive?
-3. Determine how to use query variables, so you don't hard code the `Person`s `id`. Add a text input or a menu so you can choose which id to fetch.
+2. Refactor the code into a `System` component. What props might this component receive?
