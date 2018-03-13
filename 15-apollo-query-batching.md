@@ -6,9 +6,9 @@ Apollo Client offers a `apollo-link-batch-http` package to help us here.
 
 1. Install the package.
 
-2. Import it into your index.js:
+2. Import it into your `index.js`:
 
-import { BatchHttpLink } from "apollo-link-batch-http";
+        import { BatchHttpLink } from "apollo-link-batch-http";
 
 3. Instantiate a `new BatchHttpLink()` instead of a `new HttpLink()`.
 
