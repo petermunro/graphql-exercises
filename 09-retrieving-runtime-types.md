@@ -4,7 +4,7 @@
 
    ```
    {
-     node(id: "MDEyOk9yZ2FuaXphdGlvbjY5NjMx") {
+     node(id: "MDQ6VXNlcjU3MjQzNw==") {
        id
        __typename
        login
@@ -16,7 +16,7 @@
 
    To include fields based on their runtime type, we can use _fragments_.
 
-3. Create a fragment to query the `firstName` field, and then 'call' it from your query using the spread operator. What happens?
+3. Create a fragment to query the `name` field, and then 'call' it from your query using the spread operator. What happens?
 
 4. Run the same query and fragment again, but with a different `id` (eg `MDEyOk9yZ2FuaXphdGlvbjkxMzU2Nw==`) that retrieves a different type. What response do you get? Do you get an error?
 
