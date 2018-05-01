@@ -53,7 +53,7 @@ To do this, we set some _query variables_ and then reference them in the query.
 
 6. Notice a few things:
 
-   1. Once defined in the operation, the query _must_ be used, and GraphiQL shows a (client-side) error if it isn't.
+   1. Once defined in the operation, the query variable _must_ be used, and GraphiQL shows a (client-side) error if it isn't.
    2. The type is checked too, so you can't pass in values of the wrong type.
    3. Other errors are checked too, such as providing too many parameters.
    4. All of these checks can be performed client-side, before the query is even sent to the server.
