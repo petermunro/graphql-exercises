@@ -80,4 +80,4 @@ Place the code from [here](https://gist.github.com/petermunro/28b2231d0b8d688011
 
 ### Resources
 
-- See [Fragment matcher](https://www.apollographql.com/docs/react/recipes/fragment-matching.html)
+- See [Fragment matcher](https://www.apollographql.com/docs/react/advanced/fragments#fragment-matcher)
