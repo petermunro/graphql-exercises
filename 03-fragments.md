@@ -2,21 +2,21 @@
 
 A fragments is a group of fields that can be reused.
 
-1. Execute this query:
+1.  Execute this query:
 
         {
             first: organization(login: "facebook") {
                 login
                 id
                 url
-                members {
+                membersWithRole {
                   totalCount
                 }
             }
             second: organization(login: "Netflix") {
                 id
                 url
-                members {
+                membersWithRole {
                   totalCount
                 }
             }
@@ -24,36 +24,36 @@ A fragments is a group of fields that can be reused.
 
     > Note: Auto-complete doesn't work when using aliases in GraphiQL (bug?). Remove the alias temporarily to see the correct autocompletions.
 
-2. This can be rewritten, as there is duplication across the subfields. First, define a fragment that contains the fields you want to reuse, but don't execute the query yet:
+2.  This can be rewritten, as there is duplication across the subfields. First, define a fragment that contains the fields you want to reuse, but don't execute the query yet:
 
 
         fragment orgFields on Organization {
-                path
-                id
-                url
-                members {
-                  totalCount
-                }
+          login
+          location
+          websiteUrl
+          membersWithRole {
+            totalCount
+          }
         }
 
-   > You can choose the fragment name (I've chosen `orgFields`).
-   > Fragments must specify the _type_ they apply to. This is
-   > what the `on` clause does, and enables the fragment fields to be
-   > type checked.
+> You can choose the fragment name (I've chosen `orgFields`).
+> Fragments must specify the _type_ they apply to. This is
+> what the `on` clause does, and enables the fragment fields to be
+> type checked.
 
-   Now apply this fragment by using the _spread_ operator (`...`) before the fragment name. Type the following query either before or after your fragment definition, and execute it:
+Now apply this fragment by using the _spread_ operator (`...`) before the fragment name. Type the following query either before or after your fragment definition, and execute it:
 
-       {
-         first: organization(login: "facebook") {
-           login
-   				...orgFields
-         }
-         second: organization(login: "Netflix") {
-           ...orgFields
-         }
-       }
+    {
+      first: organization(login: "facebook") {
+        login
+        ...orgFields
+      }
+      second: organization(login: "Netflix") {
+        ...orgFields
+      }
+    }
 
-3. Now your turn. Retrieve the `User`s with `login`s "stubailo" and "gaearon",  and
+3. Now your turn. Retrieve the `User`s with `login`s "stubailo" and "gaearon", and
    the fields `login`,`lastName`,`createdAt`, `company`, `location` and `email`.
    Use fragments to reuse the common fields.
 
