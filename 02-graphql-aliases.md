@@ -1,4 +1,4 @@
-### Aliases
+## Aliases
 
 1.  Try executing this query:
 
