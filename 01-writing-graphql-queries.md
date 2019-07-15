@@ -66,32 +66,32 @@ Fields can also represent more complex data, or relationships to other data, in 
 
 Ultimately, all selections must resolve to simple fields which return scalar values.
 
-   1. Add in the following to your repository query, underneath the `createdAt` field:
+  1. Add in the following to your repository query, underneath the `createdAt` field:
 
-                commitComments(first: 5) {
-                  edges {
-                    node {
-                      author {
-                        login
-                      }
-                      body
+              commitComments(first: 5) {
+                edges {
+                  node {
+                    author {
+                      login
                     }
+                    body
                   }
                 }
+              }
 
-      What does this query find?
+       What does this query find?
 
-    2. Use the top-level field `organization` to retrieve in one response, for "facebook":
+  2. Use the top-level field `organization` to retrieve in one response, for "facebook":
 
-       - its login
-       - the total count of its members
-       - when the repository called "relay" was created
+      - its login
+      - the total count of its members
+      - when the repository called "relay" was created
 
 
-3. What are the _top level_ queries that may be run? To find out, remove everything except `{ }` and type CTRL-SPACE between the braces.
+  3. What are the _top level_ queries that may be run? To find out, remove everything except `{ }` and type CTRL-SPACE between the braces.
 
-4. Examine the "Docs" button to the right. It enables you to browse the schema.
+  4. Examine the "Docs" button to the right. It enables you to browse the schema.
      - Under "Docs", navigate to the ROOT TYPE: `query: Root`.
      - You'll see a list of fields.
 
-   How do types relate to fields?
+     How do types relate to fields?
