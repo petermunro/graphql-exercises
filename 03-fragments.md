@@ -54,7 +54,7 @@ Now apply this fragment by using the _spread_ operator (`...`) before the fragme
     }
 
 3. Now your turn. Retrieve the `User`s with `login`s "stubailo" and "gaearon", and
-   the fields `login`,`lastName`,`createdAt`, `company`, `location` and `email`.
+   the fields `login`,`name`,`createdAt`, `company`, `location` and `email`.
    Use fragments to reuse the common fields.
 
 4. Notice that you can mix fields and fragments as we did in the `first` query above (`...orgFields` and `country`). What happens if you specify a field twice - in both the fragment and the query that uses it?
