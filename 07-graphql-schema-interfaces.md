@@ -28,7 +28,9 @@ In a request, you can ask for a field that is of an interface type:
    Use GraphiQL's Documentation Explorer to drill down from
    the top-level `Query` type.
 
-4. Which of these types _could_ implement the `Node` interface?
+4. Which of these types implement the `Node` interface? To find
+   out, navigate to `Node` and look at the list of types
+   implementing it.
 
 5. So if you request a data item of type `Node`, how many different types _could_ you potentially receive? What are some example types?
 
