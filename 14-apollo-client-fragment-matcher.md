@@ -55,13 +55,17 @@ A solution to this is to give Apollo Client the schema it needs.
 1. Create a file in the top level of your homehub client project, calling it `getFragmentSchema.js`.
 Place the code from [here](https://gist.github.com/petermunro/28b2231d0b8d688011f6265f6d094913) into it.
 
-2. Run this code:
+2. Install `node-fetch`:
+
+        $ npm install node-fetch --save-dev
+
+3. Run this code:
 
         $ node getFragmentSchema.js
 
    It should retrieve the types and their relationships from your server into a JSON file and place it into `src/fragmentTypes.json`.
 
-3. Modify `src/index.js`, inserting this code:
+4. Modify `src/index.js`, inserting this code:
 
         import { IntrospectionFragmentMatcher } from 'apollo-cache-inmemory';
         import introspectionQueryResultData from './fragmentTypes.json';
@@ -71,11 +75,11 @@ Place the code from [here](https://gist.github.com/petermunro/28b2231d0b8d688011
         });
 
 
-4. Modify the `cache` line where you instantiate a new ApolloClient, inserting `{ fragmentMatcher }` as follows:
+5. Modify the `cache` line where you instantiate a new ApolloClient, inserting `{ fragmentMatcher }` as follows:
 
         cache: new InMemoryCache({ fragmentMatcher })
 
-5. Run your app and check that the errors have gone.
+6. Run your app and check that the errors have gone.
 
 
 ### Resources
