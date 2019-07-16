@@ -32,7 +32,10 @@ fragment nameFields on Person {
 }
 ```
 
-1. Using inline fragments, retrieve the fields for two different concrete types from a result. (TODO: which ones?)
+1. Using inline fragments, retrieve the fields for the two different concrete types we used earlier, the `node`s with the following IDs:
+
+    - `"MDQ6VXNlcjU3MjQzNw=="`
+    - `"MDEyOk9yZ2FuaXphdGlvbjkxMzU2Nw=="`
 
 2. You can think of the `...on Person` as a "type condition". If a `Person` is returned, its fields (eg `firstName`) will be retrieved. So you can select the fields you want based on the runtime type, kind of like a declarative `if` statement: if a `Person` is returned, get me their `firstName`.
 
