@@ -84,7 +84,7 @@ Ultimately, all selections must resolve to simple fields which return scalar val
   2. Use the top-level field `organization` to retrieve in one response, for "facebook":
 
       - its login
-      - the total count of its members
+      - the total count of its "`membersWithRole`"
       - when the repository called "relay" was created
 
 
