@@ -5,7 +5,7 @@
 
 2.  Install the following npm packages:
 
-        npm install apollo-client apollo-cache-inmemory apollo-link-http react-apollo graphql-tag graphql --save
+        npm install @apollo/client graphql
 
     Documentation:
 
@@ -16,65 +16,65 @@
 
 3.  Import `apollo-client` and instantiate it, pointing it at your local GraphQL server:
 
-        import { ApolloClient } from 'apollo-client';
-        import { HttpLink } from 'apollo-link-http';
-        import { InMemoryCache } from 'apollo-cache-inmemory';
+    ```javascript
+    import { ApolloClient, InMemoryCache, ApolloProvider, gql } from '@apollo/client';
 
-        const client = new ApolloClient({
-          link: new HttpLink({uri: 'http://localhost:4001/graphql'} ),
-          cache: new InMemoryCache(),
-        });
+    const client = new ApolloClient({
+      uri: 'http://localhost:4001/graphql',
+      cache: new InMemoryCache(),
+    });
+    ```
 
-4.  Import `ApolloProvider`:
+4.  Wrap your `<App>` in an `ApolloProvider` component:
 
-        import { ApolloProvider } from 'react-apollo';
-
-5.  Create an `ApolloProvider` component, which will wrap components in your React tree:
-
-        ReactDOM.render(
-          <ApolloProvider client={client}>
-            <App />
-          </ApolloProvider>,
-          document.getElementById('root')
-        );
+    ```javascript
+    ReactDOM.render(    // for React < v18
+                        // alternatively root.render(...)
+      <ApolloProvider client={client}>
+        <App />
+      </ApolloProvider>,
+      document.getElementById('root') // for React < v18
+    );
+    ```
 
 ### `App.js`
 
 6.  Import the Apollo client libraries:
 
-        import { graphql } from 'react-apollo';
-        import gql from 'graphql-tag';
+    ```javascript
+    import { useQuery, gql } from '@apollo/client';
+    ```
 
-7.  At the bottom of the file, after the `App` component class, remove
-    the `export default App;` clause. We will set up the GraphQL query
-    and wrap the `App` component using the `graphql()` function to make
-    the retrieved data available to our `App` component:
+7.  Add your query. For example, let's make a "hello" query:
 
-        const MyQuery = gql`query MyQuery {
-          system {
-            hubname
-            uptime
-          }
-        }`;
+    ```javascript
+    const GET_HELLO_WORLD = gql`
+      query GetHelloWorld {
+        system {
+          hello
+        }
+      }
+    `;
+    ```
 
-        const MyAppWithData = graphql(MyQuery)(App);
-        export default MyAppWithData;
 
-8.  Now we just need to render the data received. I recommend installing
-    the [React devtools](https://github.com/facebook/react-devtools) if you
-    haven't already done so, to view the component's props so you can see
-    the data returned by the server. I added a paragraph to my `App` render
-    function as follows:
+8.  Now we just need to render the data received. I recommend installing the React DevTools if you haven't already done so, to view the component's props so you can see the data returned by the server. I added a paragraph to my `App` render function as follows:
 
-        class App extends Component {
-          render() {
-            let system = this.props.data.system;
-            return (
-              ...
-              <p>
-                  Uptime: <span>{system && system.uptime} </span>
-              </p>
-              ...
+    ```js
+    function App() {
+      const { loading, error, data } = useQuery(GET_HELLO_WORLD);
+
+      return (
+        <div className="App">
+          <header className="App-header">
+            {loading && <p>Loading...</p>}
+            {error && <p>An error occurred</p>}
+            <p>{data?.system?.hello}</p>
+          </header>
+        </div>
+      );
+    }
+    ```
 
 ### Questions for you
 
