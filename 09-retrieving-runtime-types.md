@@ -19,6 +19,6 @@
 
 3. Create a fragment to query the `login` and `name` fields, and then 'call' it from your query using the spread operator. What happens?
 
-4. Run the same query and fragment again, but with a different `id` (eg `MDEyOk9yZ2FuaXphdGlvbjkxMzU2Nw==`) that retrieves a different type. What response do you get? Do you get an error?
+4. Run the same query and fragment again, but with a different `id` (eg `O_kgDOAA3wnw`) that retrieves a different type. What response do you get? Do you get an error?
 
 5. How could you retrieve a `login` and `name` if a `User` is returned, but a `description`, `name` and `location` if an `Organization` is returned? Try it.
